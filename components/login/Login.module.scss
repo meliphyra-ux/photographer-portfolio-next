@@ -1,0 +1,51 @@
+$main-color: #0c0c0c;
+$login-font: 32px;
+
+.loginPage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4F4D4D;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 1000'%3E%3Cg %3E%3Ccircle fill='%234F4D4D' cx='50' cy='0' r='50'/%3E%3Cg fill='%234c4949' %3E%3Ccircle cx='0' cy='50' r='50'/%3E%3Ccircle cx='100' cy='50' r='50'/%3E%3C/g%3E%3Ccircle fill='%23494546' cx='50' cy='100' r='50'/%3E%3Cg fill='%23464142' %3E%3Ccircle cx='0' cy='150' r='50'/%3E%3Ccircle cx='100' cy='150' r='50'/%3E%3C/g%3E%3Ccircle fill='%23433e3e' cx='50' cy='200' r='50'/%3E%3Cg fill='%23403a3b' %3E%3Ccircle cx='0' cy='250' r='50'/%3E%3Ccircle cx='100' cy='250' r='50'/%3E%3C/g%3E%3Ccircle fill='%233d3638' cx='50' cy='300' r='50'/%3E%3Cg fill='%233a3335' %3E%3Ccircle cx='0' cy='350' r='50'/%3E%3Ccircle cx='100' cy='350' r='50'/%3E%3C/g%3E%3Ccircle fill='%23362f31' cx='50' cy='400' r='50'/%3E%3Cg fill='%23332b2e' %3E%3Ccircle cx='0' cy='450' r='50'/%3E%3Ccircle cx='100' cy='450' r='50'/%3E%3C/g%3E%3Ccircle fill='%2330282b' cx='50' cy='500' r='50'/%3E%3Cg fill='%232d2429' %3E%3Ccircle cx='0' cy='550' r='50'/%3E%3Ccircle cx='100' cy='550' r='50'/%3E%3C/g%3E%3Ccircle fill='%232a2126' cx='50' cy='600' r='50'/%3E%3Cg fill='%23261e23' %3E%3Ccircle cx='0' cy='650' r='50'/%3E%3Ccircle cx='100' cy='650' r='50'/%3E%3C/g%3E%3Ccircle fill='%23231a20' cx='50' cy='700' r='50'/%3E%3Cg fill='%2320171e' %3E%3Ccircle cx='0' cy='750' r='50'/%3E%3Ccircle cx='100' cy='750' r='50'/%3E%3C/g%3E%3Ccircle fill='%231d141b' cx='50' cy='800' r='50'/%3E%3Cg fill='%231a1019' %3E%3Ccircle cx='0' cy='850' r='50'/%3E%3Ccircle cx='100' cy='850' r='50'/%3E%3C/g%3E%3Ccircle fill='%23160b16' cx='50' cy='900' r='50'/%3E%3Cg fill='%23130614' %3E%3Ccircle cx='0' cy='950' r='50'/%3E%3Ccircle cx='100' cy='950' r='50'/%3E%3C/g%3E%3Ccircle fill='%230E0011' cx='50' cy='1000' r='50'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: contain;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%;
+  max-width: 600px;
+  padding: 6% 10%;
+  border: 5px #ffffff solid;
+  label {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: $login-font;
+  }
+  input {
+    margin-bottom: 15px;
+    height: 50px;
+    font-size: calc($login-font - 4px);
+    color: #ffffff;
+    background-color: $main-color;
+    border: 2px solid #ffffff;
+    
+  }
+  button {
+    height: 65px;
+    font-size: $login-font;
+    margin-top: 45px;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: $main-color;
+    border: 2px solid #ffffff;
+    transition: 0.2s ease-in-out all;
+    border-radius: 20px;
+  }
+  button:hover {
+    background-color: #ffffff;
+    color: $main-color;
+  }
+}

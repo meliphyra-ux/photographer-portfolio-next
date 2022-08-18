@@ -1,0 +1,51 @@
+$main-color: #0c0c0c;
+$default-font: 24px;
+
+.adminAddphoto {
+    grid-row: 2;
+    grid-column: 2;
+    background-color: #ffffff;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding: 20px 27px;
+    overflow-x: hidden;
+    h2 {
+        margin: 5px 0 18px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        label {
+            font-size: $default-font;
+          }
+          input {
+            margin-bottom: 15px;
+            height: 38px;
+            font-size: calc($default-font + 4px);
+            color: #0c0c0c;
+            border: 2px solid #0c0c0c;
+          }
+          button {
+            margin-top: 25px;
+            border: 2px solid $main-color;
+            font-size: $default-font;
+            border: 2px solid $main-color;
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 5px 0;
+            transition: 0.2s all ease-in-out;
+            cursor: pointer;
+          }
+          button:hover {
+            color: #ffffff;
+            background-color: $main-color;
+          }
+      }
+  }
+  @media screen and (max-width: 900px){
+    .adminAddphoto{
+      grid-row: 3;
+      grid-column: 1;
+      margin: 10px
+    }
+  }
