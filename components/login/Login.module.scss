@@ -15,9 +15,9 @@ $login-font: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 60%;
-  max-width: 600px;
-  padding: 6% 10%;
+  width: 90%;
+  max-width: 900px;
+  padding: 3% 6%;
   border: 5px #ffffff solid;
   label {
     color: #ffffff;
@@ -34,8 +34,7 @@ $login-font: 32px;
     
   }
   button {
-    height: 65px;
-    font-size: $login-font;
+    // font-size: $login-font;
     margin-top: 45px;
     cursor: pointer;
     color: #ffffff;

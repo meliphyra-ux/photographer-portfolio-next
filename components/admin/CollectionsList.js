@@ -10,15 +10,15 @@ export default function CollectionsList() {
   console.log(collections)
   return (
     <div className={styles.adminCollections}>
-      <h2>Collection</h2>
+      <h2 className="text-3xl font-bold">Collection</h2>
 
       {collections && collections.length === 0 ? (
         <h1>There is no collections</h1>
       ) : (
-        <div className="admin--collections--list">
+        <div>
           {collections.map((collection) => (
-            <div className={styles.adminItemBlock} key={collection.collectionName}>
-              <h3>{collection.collectionName}</h3>
+            <div className={`${styles.adminItemBlock} mb-4`} key={collection.collectionName}>
+              <h3 className="text-xl">{collection.collectionName}</h3>
               <button
                 onClick={() => {
                   dispatch(removeCollection(collection));

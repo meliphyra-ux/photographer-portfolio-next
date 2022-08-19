@@ -9,7 +9,6 @@ export default function Login() {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     const auth = getAuth();
     auth.operations
@@ -41,14 +40,14 @@ export default function Login() {
   return (
     <>
       {loading && <h1>Loading...</h1>}
-      {!loggedIn && !loading && (
+      {!loading && (
         <div className={styles.loginPage}>
           <form
             onSubmit={(e) => {
               e.preventDefault();
               LogIn(email, password);
             }}
-            className={styles.login}
+            className={`${styles.login} w-full lg:w-3/6`}
           >
             <label>Email</label>
             <input
@@ -70,7 +69,7 @@ export default function Login() {
               }}
               required
             />
-            <button>Login</button>
+            <button className="text-2xl lg:text-3xl py-2 lg:py-4">Login</button>
           </form>
         </div>
       )}

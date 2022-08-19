@@ -7,7 +7,7 @@ import { Provider, useDispatch } from "react-redux";
 import { updatePhotos } from "../components/store/photosSlice";
 import { updateCollection } from "../components/store/collectionSlice";
 
-import "../styles/styles.scss";
+import "../styles/styles.css";
 
 // Firestore initialize
 import { initializeApp } from "firebase/app";
@@ -62,7 +62,7 @@ const MyApp = ({ Component, pageProps }) => {
     <Provider store={store}>
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
       </Head>
       <ProviderWrap>
         <Component {...pageProps} />

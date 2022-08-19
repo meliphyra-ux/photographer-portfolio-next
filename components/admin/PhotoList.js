@@ -28,14 +28,14 @@ export default function PhotoList() {
 
   return (
     <div className={styles.adminPhotos}>
-      <h2>Photos</h2>
+      <h2 className="text-3xl font-bold">Photos</h2>
       <div>
         {photos && photos.length === 0 ? (
           <h1>There is no photos</h1>
         ) : (
           photos.map((photo) => (
-            <div className={styles.adminItemBlock} key={photo.id}>
-              <h3>
+            <div className={`${styles.adminItemBlock} mb-4`} key={photo.id}>
+              <h3 className="text-xl">
                 {photo.description.trim().length < 35
                   ? photo.description.trim()
                   : photo.description.trim().slice(0, 35) + "..."}
