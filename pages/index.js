@@ -18,7 +18,7 @@ export default function index() {
 
   return (
     <div className="flex flex-row items-center sm:text-left justify-center sm:justify-between h-screen ">
-      <div className="lg:mx-32 mx-16 flex flex-col">
+      <div className="lg:mx-32 mx-16 flex flex-col justify-evenly h-1/2">
         <h1 className="text-white lg:text-6xl text-4xl">
           Hello, I'm Sasha.
           <br />
@@ -26,7 +26,8 @@ export default function index() {
           <br />
           Photographer
         </h1>
-        <p className="text-white lg:text-3xl text-2xl mt-12 font-extralight">Lorem ipsum</p>
+        <p className="text-white lg:text-3xl text-2xl font-extralight">Lorem ipsum</p>
+        <button className="px-2.5 w-1/2 py-4 text-white border-2 border-white hover:bg-white hover:text-black duration-300">Collections</button>
       </div>
       <div className="overflow-hidden lg:w-2/5 md:flex hidden flex-row h-screen">
         {photos.map((photo) => (
