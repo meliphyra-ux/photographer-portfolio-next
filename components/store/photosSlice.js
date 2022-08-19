@@ -14,15 +14,15 @@ export const photosSlice = createSlice({
                 src: action.payload.data().src,
                 id: action.payload.id
             })
-            console.log(state.photos[0])
         },
         removePhoto: (state, action) => {
               const photosArray = state.photos
               const deletedPhoto = state.photos.indexOf(action.payload)
               photosArray.splice(deletedPhoto, 1) 
               state.value = photosArray
+              DeletePhoto(action.payload.id)
         }
     }
 }) 
-export const { updatePhotos } = photosSlice.actions
+export const { updatePhotos, removePhoto } = photosSlice.actions
 export default photosSlice.reducer

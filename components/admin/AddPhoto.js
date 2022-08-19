@@ -16,7 +16,7 @@ export default function AddPhoto() {
 
   return (
     <div className={styles.adminAddphoto}>
-      <h2>Add Photo</h2>
+      <h2 className="text-3xl font-bold">Add Photo</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();

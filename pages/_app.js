@@ -7,7 +7,7 @@ import { Provider, useDispatch } from "react-redux";
 import { updatePhotos } from "../components/store/photosSlice";
 import { updateCollection } from "../components/store/collectionSlice";
 
-import "../styles/styles.scss";
+import "../styles/styles.css";
 
 // Firestore initialize
 import { initializeApp } from "firebase/app";
