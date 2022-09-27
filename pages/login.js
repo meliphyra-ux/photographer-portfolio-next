@@ -5,7 +5,6 @@ import { useRouter } from "next/router";
 
 export default function Login() {
   const router = useRouter();
-  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,10 +27,7 @@ export default function Login() {
         router.push("/admin")
       })
       .catch((err) => {
-        const errorCode = err.code;
-        const errorMessage = err.message;
-        console.log(errorCode, errorMessage);
-        setError(true);
+        console.log(err.code, err.message);
       });
   };
 
@@ -47,7 +43,7 @@ export default function Login() {
               e.preventDefault();
               LogIn(email, password);
             }}
-            className={`${styles.login} w-full lg:w-3/6`}
+            className={`${styles.login} w-full sm:w-4/5 max-w-2xl`}
           >
             <label>Email</label>
             <input

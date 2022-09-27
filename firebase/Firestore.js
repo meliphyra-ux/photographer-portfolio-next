@@ -1,4 +1,4 @@
-import { addDoc, collection, updateDoc ,getDocs, setDoc, doc, deleteDoc, arrayUnion } from "firebase/firestore";
+import { addDoc, collection, updateDoc ,getDocs, setDoc, doc, deleteDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import { db } from "../pages/_app"
 
 export async function setPhoto(collect, description, photoSrc) {
@@ -40,12 +40,18 @@ export async function setCollections(collectionName, photoID){
   });
 }
 
-export async function DeletePhoto(fotoID){
-  await deleteDoc(doc(db, "photos", fotoID));
+export async function DeletePhoto(photoID, collectionName){
+  const collectionRef = doc(db, "collections", collectionName)
+  await updateDoc(collectionRef, {
+    photoArray: arrayRemove(photoID)
+  })
+  await deleteDoc(doc(db, "photos", photoID))
 }
+
 export async function DeleteCollection(collectionName){
   await deleteDoc(doc(db, "collections", collectionName));
 }
+
 export async function UpdateCollectionArray(collectionName, photoID){
   const collectionRef = doc(db, "collections", collectionName);
   await updateDoc(collectionRef, {

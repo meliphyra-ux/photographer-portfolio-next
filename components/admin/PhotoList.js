@@ -41,8 +41,9 @@ export default function PhotoList() {
                   : photo.description.trim().slice(0, 35) + "..."}
               </h3>
               <button
+              className="mb-2"
                 onClick={() => {
-                  DeletePhoto(photo.id);
+                  DeletePhoto(photo.id, photo.collection);
                   dispatch(removePhoto(photo));
                 }}
               >

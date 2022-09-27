@@ -5,11 +5,10 @@ import {
   UpdateCollectionArray,
 } from "../../firebase/Firestore";
 import styles from "./AddPhoto.module.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function AddPhoto() {
   const collections = useSelector((state) => state.collection.collectionsList);
-  const dispatch = useDispatch();
   const [collection, setCollection] = useState("");
   const [photoSrc, setPhotoSrc] = useState("");
   const [description, setDescription] = useState("");

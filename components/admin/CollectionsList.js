@@ -7,7 +7,6 @@ import { removeCollection } from "../store/collectionSlice";
 export default function CollectionsList() {
   const collections = useSelector((state) => state.collection.value);
   const dispatch = useDispatch();
-  console.log(collections)
   return (
     <div className={styles.adminCollections}>
       <h2 className="text-3xl font-bold">Collection</h2>
@@ -20,6 +19,7 @@ export default function CollectionsList() {
             <div className={`${styles.adminItemBlock} mb-4`} key={collection.collectionName}>
               <h3 className="text-xl">{collection.collectionName}</h3>
               <button
+                className="mb-2"
                 onClick={() => {
                   dispatch(removeCollection(collection));
                 }}

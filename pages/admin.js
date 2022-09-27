@@ -32,7 +32,6 @@ export default function Admin() {
           <PhotoList />
           <CollectionsList />
           <AddPhoto />
-          
         </>
       )}
     </div>
