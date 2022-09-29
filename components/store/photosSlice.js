@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 export const photosSlice = createSlice({
     name: "photos",
     initialState: {
