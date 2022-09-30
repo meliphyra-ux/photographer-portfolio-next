@@ -5,6 +5,8 @@ import telegram from "../styles/assets/telegram.png"
 import { useSelector } from "react-redux";
 import Image from 'next/image'
 import { useRouter } from "next/router";
+// import Link from "next/link";
+
 
 export default function index() {
   const router = useRouter()
