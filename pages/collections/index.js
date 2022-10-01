@@ -1,15 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import CollectionList from '../../components/collections/CollectionList'
 
 const index = () => {
-    const collections = useSelector(state => state.collection.value)
-    console.log(collections)
   return (
-    <section>
-        <h1 className='text-white'>Collections list</h1>
-        <section>
-            
-        </section>
+    <section className='sm:px-16 lg:px-44 py-10 flex flex-col h-screen'>
+        <h1 className='text-white md:text-5xl text-3xl mb-12'>Collections list</h1>
+            <CollectionList />
     </section>
   )
 }
