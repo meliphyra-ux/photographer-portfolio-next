@@ -14,7 +14,6 @@ export const collectionSlice = createSlice({
     },
     removeCollection: (state, action) => {
       const collectionArray = state.value;
-      console.log(collectionArray)
       const deletedCollectionIndex = state.value.indexOf(action.payload);
       let deletedCollection = collectionArray.splice(deletedCollectionIndex, 1);
       deletedCollection[0].photoArray.forEach(item =>{
