@@ -7,12 +7,12 @@ const CollectionList = () => {
     const router = useRouter()
     console.log(collections)
   return (
-    <section className='text-white text-3xl grid grid-cols-4 gap-32'>
+    <section className='text-white text-3xl grid grid-cols-4 gap-8'>
         {collections && collections.map(collection => (
             <div onClick={e => {
                 e.stopPropagation();
                 router.push(`/collections/${collection}`)
-            }} className='w-72 h-72 bg-neutral-800 rounded-xl flex justify-center flex-col items-center cursor-pointer hover:bg-neutral-700 hover:text-4xl hover:scale-105 duration-150'
+            }} className='w-full aspect-square bg-neutral-800 rounded-xl flex justify-center flex-col items-center cursor-pointer hover:bg-neutral-700 hover:text-4xl hover:scale-105 duration-150'
             key={`${collection}`}
             >
                 <p>
