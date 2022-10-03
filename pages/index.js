@@ -52,7 +52,7 @@ export default function index() {
         {photos.map((photo) => (
           <img
             src={photo.src}
-            className="relative duration-300 object-cover object-center"
+            className="relative duration-300 object-cover object-center w-full "
             style={{ left: `${0 - photoSlider * 100}%` }}
           />
         ))}

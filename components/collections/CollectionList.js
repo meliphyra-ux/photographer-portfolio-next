@@ -7,7 +7,7 @@ const CollectionList = () => {
     const router = useRouter()
     console.log(collections)
   return (
-    <section className='text-white text-3xl flex flex-wrap'>
+    <section className='text-white text-3xl grid grid-cols-4 gap-32'>
         {collections && collections.map(collection => (
             <div onClick={e => {
                 e.stopPropagation();
