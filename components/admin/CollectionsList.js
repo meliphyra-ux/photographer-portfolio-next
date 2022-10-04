@@ -4,7 +4,7 @@ import styles from "./Admin.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { removeCollection } from "../store/collectionSlice";
 
-export default function CollectionsList() {
+const CollectionsList = () => {
   const collections = useSelector((state) => state.collection.value);
   const dispatch = useDispatch();
   return (
@@ -33,3 +33,4 @@ export default function CollectionsList() {
     </div>
   );
 }
+export default CollectionsList

@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 // import Link from "next/link";
 
 
-export default function index() {
+const Main = () => {
   const router = useRouter()
   const photos = useSelector((state) => state.photos.photos);
   const [photoSlider, setPhotoSlider] = useState(0);
@@ -25,10 +25,10 @@ export default function index() {
   }, [photos, photoSlider]);
 
   return (
-    <section className="flex flex-row items-center sm:text-left justify-center sm:justify-between h-screen ">
-      <article className="lg:mx-32 mx-16 w-screen md:w-3/5 lg:w-3/6 flex flex-col justify-center h-2/3">
-        <h1 className="text-white lg:text-6xl text-2xl mb-6">
-          Hello, I'm Sasha.
+    <section className="flex flex-row items-center sm:text-left justify-center md:justify-between h-screen ">
+      <article className="lg:mx-32 mx-16 md:w-3/5 lg:w-3/6 flex flex-col justify-center h-2/3">
+        <h1 className="text-white lg:text-6xl text-4xl mb-6">
+          Hello, I&apos;m Sasha.
           <br />
           Professional
           <br />
@@ -37,14 +37,14 @@ export default function index() {
         <p className="text-white lg:text-4xl text-2xl font-extralight mb-10">
           Lorem ipsum
         </p>
-        <button className="px-2.5 w-1/3 py-4 text-white border-2 border-white hover:bg-white hover:text-black duration-300 text-xl mb-6"
+        <button className="px-2.5 md:w-1/3 py-4 text-white border-2 border-white hover:bg-white hover:text-black duration-300 text-xl mb-6"
         onClick={() => router.push('/collections')}
         >
           Collections
         </button>
         <section>
           <button className="mr-5"><a href="" target="_blank"><Image src={instagram} alt="Instagram" width={50} height={50}/></a></button>
-          <button className="mr-5"><a href="https://t.me/gamewithsasha" target="_blank"><Image src={telegram} alt="Telegram" width={50} height={50}/></a></button>
+          <button className="mr-5"><a href="https://t.me/gamewithsasha" target="_blank" rel="noopener"><Image src={telegram} alt="Telegram" width={50} height={50}/></a></button>
           <button className="mr-5"><a href="" target="_blank"><Image src={facebook} alt="Facebook" width={50} height={50}/></a></button>
         </section>
       </article>
@@ -54,9 +54,11 @@ export default function index() {
             src={photo.src}
             className="relative duration-300 object-cover object-center w-full "
             style={{ left: `${0 - photoSlider * 100}%` }}
+            alt="Photo carusel"
           />
         ))}
       </div>
     </section>
   );
 }
+export default Main;

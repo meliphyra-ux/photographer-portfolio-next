@@ -6,7 +6,7 @@ import styles from "../components/admin/Admin.module.scss";
 import PhotoList from "../components/admin/PhotoList";
 import CollectionsList from "../components/admin/CollectionsList";
 
-export default function Admin() {
+const Admin = () => {
   const [loading, setLoading] = useState(true);
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -22,7 +22,7 @@ export default function Admin() {
       .catch(() => {
         setLoading(false);
       });
-  }, []);
+  });
 
   return (
     <div className={styles.admin}>
@@ -37,3 +37,4 @@ export default function Admin() {
     </div>
   );
 }
+export default Admin

@@ -7,7 +7,7 @@ import {
 import styles from "./AddPhoto.module.scss";
 import { useSelector } from "react-redux";
 
-export default function AddPhoto() {
+const AddPhoto = () => {
   const collections = useSelector((state) => state.collection.collectionsList);
   const [collection, setCollection] = useState("");
   const [photoSrc, setPhotoSrc] = useState("");
@@ -62,3 +62,4 @@ export default function AddPhoto() {
     </div>
   );
 }
+export default AddPhoto

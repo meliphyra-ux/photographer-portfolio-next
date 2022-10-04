@@ -8,8 +8,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { removePhoto } from "../store/photosSlice";
 
-
-export default function PhotoList() {
+const PhotoList = () => {
   const photos = useSelector((state) => state.photos.photos);
   const dispatch = useDispatch();
 
@@ -64,3 +63,4 @@ export default function PhotoList() {
     </div>
   );
 }
+export default PhotoList

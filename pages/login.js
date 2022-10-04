@@ -3,7 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import styles from "../components/login/Login.module.scss";
 import { useRouter } from "next/router";
 
-export default function Login() {
+const Login = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ export default function Login() {
       .catch(() => {
         setLoading(false);
       });
-  }, []);
+  });
 
   const LogIn = (email, password) => {
     const auth = getAuth();
@@ -72,3 +72,4 @@ export default function Login() {
     </>
   );
 }
+export default Login
