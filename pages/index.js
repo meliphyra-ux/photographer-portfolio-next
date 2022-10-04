@@ -61,6 +61,7 @@ const Main = () => {
               <Image
                 width={1200}
                 height={1068}
+                loading="eager"
                 key={photo.src}
                 src={photo.src}
                 className="relative duration-300 object-cover object-center w-full "
