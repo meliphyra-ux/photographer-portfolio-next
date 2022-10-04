@@ -3,7 +3,7 @@ import instagram from "../styles/assets/instagram.png"
 import facebook from "../styles/assets/facebook.png"
 import telegram from "../styles/assets/telegram.png"
 import { useSelector } from "react-redux";
-import Image from 'next/image'
+import Image from 'next/future/image'
 import { useRouter } from "next/router";
 // import Link from "next/link";
 
@@ -49,14 +49,17 @@ const Main = () => {
         </section>
       </article>
       <div className="overflow-hidden md:w-2/5 lg:w-3/6 md:flex hidden flex-row h-screen">
-        {photos.map((photo) => (
-          <img
-            key={photo.src}
-            src={photo.src}
-            className="relative duration-300 object-cover object-center w-full "
-            style={{ left: `${0 - photoSlider * 100}%` }}
-            alt="Photo carusel"
-          />
+        {photos.map((photo, index) => (
+            <Image
+              width={1400}
+              height={1400}
+              key={photo.src}
+              src={photo.src}
+              className="relative duration-300 object-cover object-center w-full "
+              style={{ left: `${0 - photoSlider * 100}%` }}
+              id={index}
+              alt="Photo carusel"
+            />
         ))}
       </div>
     </section>
