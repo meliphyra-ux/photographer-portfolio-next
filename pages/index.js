@@ -33,7 +33,7 @@ const Main = () => {
           Photographer
         </h1>
         <p className="text-white lg:text-4xl text-2xl font-extralight mb-10">
-          "Taking photos is like rutine for me,<br/> a nice one rutine"
+          &quot;Taking photos is like rutine for me,<br/> a nice one rutine&quot;
         </p>
         <button className="px-2.5 md:w-1/3 py-4 text-white border-2 border-white hover:bg-white hover:text-black duration-300 text-xl mb-6"
         onClick={() => router.push('/collections')}
