@@ -43,14 +43,15 @@ const Main = () => {
           Collections
         </button>
         <section>
-          <button className="mr-5"><a href="" target="_blank"><Image src={instagram} alt="Instagram" width={50} height={50}/></a></button>
+          <button className="mr-5"><a href="" target="_blank" rel="noopener"><Image src={instagram} alt="Instagram" width={50} height={50}/></a></button>
           <button className="mr-5"><a href="https://t.me/gamewithsasha" target="_blank" rel="noopener"><Image src={telegram} alt="Telegram" width={50} height={50}/></a></button>
-          <button className="mr-5"><a href="" target="_blank"><Image src={facebook} alt="Facebook" width={50} height={50}/></a></button>
+          <button className="mr-5"><a href="" target="_blank" rel="noopener"><Image src={facebook} alt="Facebook" width={50} height={50}/></a></button>
         </section>
       </article>
       <div className="overflow-hidden md:w-2/5 lg:w-3/6 md:flex hidden flex-row h-screen">
         {photos.map((photo) => (
           <img
+            key={photo.src}
             src={photo.src}
             className="relative duration-300 object-cover object-center w-full "
             style={{ left: `${0 - photoSlider * 100}%` }}
