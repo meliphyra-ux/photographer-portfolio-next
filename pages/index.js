@@ -43,9 +43,9 @@ const Main = () => {
           Collections
         </button>
         <section>
-          <button className="mr-5"><a href="" target="_blank" rel="noopener"><Image src={instagram} alt="Instagram" width={50} height={50}/></a></button>
-          <button className="mr-5"><a href="https://t.me/gamewithsasha" target="_blank" rel="noopener"><Image src={telegram} alt="Telegram" width={50} height={50}/></a></button>
-          <button className="mr-5"><a href="" target="_blank" rel="noopener"><Image src={facebook} alt="Facebook" width={50} height={50}/></a></button>
+          <button className="mr-5"><a href=""><Image src={instagram} alt="Instagram" width={50} height={50}/></a></button>
+          <button className="mr-5"><a href="https://t.me/gamewithsasha" alt="Telegram"><Image src={telegram} alt="Telegram" width={50} height={50}/></a></button>
+          <button className="mr-5"><a href="" alt="Facebook"><Image src={facebook} alt="Facebook" width={50} height={50}/></a></button>
         </section>
       </article>
       <div className="overflow-hidden md:w-2/5 lg:w-3/6 md:flex hidden flex-row h-screen">
