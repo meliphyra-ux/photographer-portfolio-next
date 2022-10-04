@@ -49,18 +49,16 @@ const Main = () => {
         </section>
       </article>
       <div className="overflow-hidden md:w-2/5 lg:w-3/6 md:flex hidden flex-row h-screen">
-        {photos.map((photo, index) => (
+        {photos && photos.length != 0 && 
             <Image
               width={1400}
               height={1400}
-              key={photo.src}
-              src={photo.src}
-              className="relative duration-300 object-cover object-center w-full "
-              style={{ left: `${0 - photoSlider * 100}%` }}
-              id={index}
+              key={photos[photoSlider].src}
+              src={photos[photoSlider].src}
+              className="relative duration-300 object-cover object-center w-full photoSlider"
+              // style={{ left: `${0 - photoSlider * 100}%` }}
               alt="Photo carusel"
-            />
-        ))}
+            />}
       </div>
     </section>
   );

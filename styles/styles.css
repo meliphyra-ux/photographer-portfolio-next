@@ -14,3 +14,23 @@ body{
     box-sizing: border-box;
     /* font-family: 'Montserrat', sans-serif; */
 }
+.photoSlider{
+    animation-name: photoSlider;
+    animation-duration: 15s;
+    position: relative;
+    animation-fill-mode: forwards;
+}
+@keyframes photoSlider {
+    0%{
+        right: -100%;
+    }
+    2%{
+        right: 0;
+    }
+    98%{
+        right:0;
+    }
+    100%{
+        right: 100%;
+    }
+}

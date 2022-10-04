@@ -31,8 +31,6 @@ const Login = () => {
       });
   };
 
-  
-
   return (
     <>
       {loading && <h1>Loading...</h1>}
