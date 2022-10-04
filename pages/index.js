@@ -58,7 +58,9 @@ const Main = () => {
         {photos && photos.length != 0 && (
           <>
             {photos.map((photo) => (
-              <img
+              <Image
+                width={1200}
+                height={1068}
                 key={photo.src}
                 src={photo.src}
                 className="relative duration-300 object-cover object-center w-full "
