@@ -55,7 +55,7 @@ const Main = () => {
         </section>
       </article>
       <div className="overflow-hidden md:w-2/5 lg:w-3/6 md:flex hidden flex-row h-screen">
-        {photos && photos.length != 0 && (
+        {photos && photos.length != 0 && window.innerWidth > 768 && (
           <>
             {photos.map((photo) => (
               <Image
