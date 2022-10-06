@@ -4,7 +4,7 @@ import Head from "next/head";
 //Redux store
 import store from "../components/store/store";
 import { Provider, useDispatch } from "react-redux";
-import { updatePhotos } from "../components/store/photosSlice";
+import { addPhotos } from "../components/store/photosSlice";
 import { updateCollection } from "../components/store/collectionSlice";
 
 import "../styles/styles.css";
@@ -29,10 +29,15 @@ export { db };
 
 import { GetCollections, GetPhoto } from "../firebase/Firestore";
 
+// Creating component Provider Wrap for importing Redux dispatcher across app
+
 function ProviderWrap({ children }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+
+    // Fetching data 
+
     GetCollections()
       .then((docs) => {
         docs.forEach((doc) => {
@@ -45,7 +50,7 @@ function ProviderWrap({ children }) {
     GetPhoto()
       .then((docs) => {
         docs.forEach((doc) => {
-          dispatch(updatePhotos(doc));
+          dispatch(addPhotos(doc));
         });
       })
       .catch((e) => {
@@ -56,8 +61,6 @@ function ProviderWrap({ children }) {
 }
 
 const MyApp = ({ Component, pageProps }) => {
-  // Collections and Photos fetch
-
   return (
     <Provider store={store}>
       <Head>

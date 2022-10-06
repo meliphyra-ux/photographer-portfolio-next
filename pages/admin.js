@@ -11,7 +11,7 @@ const Admin = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const router = useRouter();
-
+  // Authentication check
   useEffect(() => {
     const auth = getAuth();
     auth.operations

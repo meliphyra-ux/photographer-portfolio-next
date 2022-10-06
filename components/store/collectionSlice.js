@@ -1,9 +1,12 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { DeleteCollection, DeletePhoto } from "../../firebase/Firestore";
+
+//Creating slice for collections
 
 export const collectionSlice = createSlice({
   name: "collections",
   initialState: {
+    //Initialized 2 array: 1 for collection details, 1 for names only
     value: [],
     collectionsList: [],
   },
@@ -14,7 +17,6 @@ export const collectionSlice = createSlice({
     },
     removeCollection: (state, action) => {
       const collectionArray = state.value;
-      console.log(action.payload)
       const deletedCollectionIndex = collectionArray.indexOf(action.payload);
       let deletedCollection = state.value.splice(deletedCollectionIndex, 1);
       deletedCollection[0].photoArray.forEach(item =>{

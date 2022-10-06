@@ -8,6 +8,9 @@ const Login = () => {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // Authentication check
+
   useEffect(() => {
     const auth = getAuth();
     auth.operations

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
 import {
   setCollections,
   setPhoto,
   UpdateCollectionArray,
 } from "../../firebase/Firestore";
+
 import styles from "./AddPhoto.module.scss";
-import { useSelector } from "react-redux";
 
 const AddPhoto = () => {
   const collections = useSelector((state) => state.collection.collectionsList);
@@ -61,5 +63,5 @@ const AddPhoto = () => {
       </form>
     </div>
   );
-}
-export default AddPhoto
+};
+export default AddPhoto;

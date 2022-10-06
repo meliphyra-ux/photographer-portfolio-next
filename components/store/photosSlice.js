@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { DeletePhoto } from "../../firebase/Firestore";
 
+
+// Creating slice in redux for photos
 export const photosSlice = createSlice({
     name: "photos",
     initialState: {
         photos: []
     },
     reducers: {
-        updatePhotos: (state, action) => {
+        //Reducer for adding Photos
+        addPhotos: (state, action) => {
             state.photos.push({
                 collection: action.payload.data().collection,
                 description: action.payload.data().description,
@@ -24,5 +27,5 @@ export const photosSlice = createSlice({
         }
     }
 }) 
-export const { updatePhotos, removePhoto } = photosSlice.actions
+export const { addPhotos, removePhoto } = photosSlice.actions
 export default photosSlice.reducer

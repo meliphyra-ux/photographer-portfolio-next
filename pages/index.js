@@ -22,6 +22,7 @@ const Main = () => {
   }, [photos, photoSlider]);
 
   return (
+    // Section with main info
     <section className="flex flex-row items-center sm:text-left justify-center md:justify-between h-screen ">
       <article className="lg:mx-32 mx-16 md:w-3/5 lg:w-3/6 flex flex-col justify-center h-2/3">
         <h1 className="text-white lg:text-6xl text-4xl mb-10">
@@ -54,6 +55,9 @@ const Main = () => {
           </button>
         </section>
       </article>
+
+      {/* Section for photo slider */}
+
       <div className="overflow-hidden md:w-2/5 lg:w-3/6 md:flex hidden flex-row h-screen">
         {photos && photos.length != 0 && window.innerWidth > 768 && (
           <>
