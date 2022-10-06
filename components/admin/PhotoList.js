@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Admin.module.scss";
 import { useRouter } from "next/router";
 
-import { DeletePhoto } from "../../firebase/Firestore";
 import { getAuth, signOut } from "firebase/auth";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -42,7 +41,6 @@ const PhotoList = () => {
               <button
               className="mb-2"
                 onClick={() => {
-                  DeletePhoto(photo.id, photo.collection);
                   dispatch(removePhoto(photo));
                 }}
               >
