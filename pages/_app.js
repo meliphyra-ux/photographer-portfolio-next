@@ -66,6 +66,8 @@ const MyApp = ({ Component, pageProps }) => {
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+        <title>Photographer portfolio</title>
+        <meta name="description" content="I'm Sasha - professional photographer. Welcome to my portfolio website!" />
       </Head>
       <ProviderWrap>
         <Component {...pageProps} />
