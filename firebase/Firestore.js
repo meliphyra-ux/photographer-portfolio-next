@@ -40,11 +40,12 @@ export async function GetCollections() {
   return docs;
 }
 
-export async function setCollections(collectionName, photoID) {
+export async function setCollections(collectionName, photoID, collectionImage) {
   await setDoc(doc(db, "collections", collectionName), {
     collectionName: collectionName.trim(),
     photoArray: [photoID],
   });
+  await updateCollectionImage(collectionImage)
 }
 
 export async function DeletePhoto(photoID, collectionName) {
@@ -59,9 +60,19 @@ export async function DeleteCollection(collectionName) {
   await deleteDoc(doc(db, "collections", collectionName));
 }
 
-export async function UpdateCollectionArray(collectionName, photoID) {
+export async function UpdateCollectionArray(collectionName, photoID, collectionImage) {
   const collectionRef = doc(db, "collections", collectionName);
   await updateDoc(collectionRef, {
     photoArray: arrayUnion(photoID),
   });
+  await updateCollectionImage(collectionName, collectionImage)
+}
+async function updateCollectionImage(collectionName, collectionImage){
+  const collectionRef = doc(db, "collections", collectionName);
+  if(collectionImage){
+  await updateDoc(collectionRef,
+    {
+      collectionImage,
+    })
+  }
 }

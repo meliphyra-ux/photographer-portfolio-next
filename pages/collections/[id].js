@@ -13,7 +13,7 @@ const Collection = () => {
     <section className="text-white px-8 sm:px-16 lg:px-32 py-10">
       <h1 className="md:text-5xl text-3xl mb-12 flex items-center">
         <button
-          className="text-white text-3xl max-w-fit mr-10 cursor-pointer"
+          className="text-white text-3xl max-w-fit mr-10 cursor-pointer duration-150 hover:scale-150"
           onClick={() => router.push(`/collections`)}
         >{`<-`}</button>
         {id}

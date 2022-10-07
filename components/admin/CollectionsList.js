@@ -1,8 +1,9 @@
 import React from "react";
-import styles from "./Admin.module.scss";
-//Redux imports
+
 import { useSelector, useDispatch } from "react-redux";
 import { removeCollection } from "../store/collectionSlice";
+
+import styles from "./Admin.module.scss";
 
 const CollectionsList = () => {
   const collections = useSelector((state) => state.collection.value);

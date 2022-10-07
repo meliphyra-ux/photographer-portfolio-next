@@ -14,6 +14,7 @@ const AddPhoto = () => {
   const [collection, setCollection] = useState("");
   const [photoSrc, setPhotoSrc] = useState("");
   const [description, setDescription] = useState("");
+  const [collectionImage, setCollectionImage] = useState("")
 
   return (
     <div className={styles.adminAddphoto}>
@@ -24,8 +25,8 @@ const AddPhoto = () => {
           setPhoto(collection, description, photoSrc)
             .then((photoID) => {
               collections.includes(collection)
-                ? UpdateCollectionArray(collection, photoID)
-                : setCollections(collection, photoID);
+                ? UpdateCollectionArray(collection, photoID, collectionImage)
+                : setCollections(collection, photoID, collectionImage);
             })
             .catch((e) => {
               console.log(e);
@@ -33,6 +34,7 @@ const AddPhoto = () => {
           setCollection("");
           setPhotoSrc("");
           setDescription("");
+          setCollectionImage("")
         }}
       >
         <label>Photo Src</label>
@@ -58,6 +60,13 @@ const AddPhoto = () => {
           value={collection}
           onChange={(e) => setCollection(e.target.value)}
           required
+        />
+        <label>Collection Image</label>
+        <input
+          type="url"
+          placeholder="Collection image"
+          value={collectionImage}
+          onChange={(e) => setCollectionImage(e.target.value)}
         />
         <button>Add Photo</button>
       </form>
