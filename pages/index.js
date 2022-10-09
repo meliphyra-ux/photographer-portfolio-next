@@ -63,13 +63,12 @@ const Main = () => {
           <>
             {photos.map((photo) => (
               <Image
-                width={1600}
-                height={1200}
-                loading="eager"
+                width={1200}
+                height={800}
                 key={photo.src}
                 src={photo.src}
-                className="relative duration-300 object-cover aspect-square object-center"
-                style={{ left: `${0 - photoSlider * 100}%` }}
+                className="duration-500 object-cover aspect-square object-center w-full h-full"
+                style={{ transform: `translateX(${0 - photoSlider * 100}%)` }}
                 alt="Photo carusel"
               />
             ))}
