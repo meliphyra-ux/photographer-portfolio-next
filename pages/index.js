@@ -45,12 +45,12 @@ const Main = () => {
                 <section>
                     <button className="mr-5">
                         <a href="https://www.instagram.com/gamewithsasha/">
-                            <Image src={instagram} alt="Instagram" width={50} height={50}/>
+                            <Image src={instagram} alt="Instagram" width={50} height={50} priority={true}/>
                         </a>
                     </button>
                     <button className="mr-5">
-                        <a href="https://t.me/gamewithsasha" alt="Telegram">
-                            <Image src={telegram} alt="Telegram" width={50} height={50}/>
+                        <a href="https://t.me/gamewithsasha">
+                            <Image src={telegram} alt="Telegram" width={50} height={50} priority={true}/>
                         </a>
                     </button>
                 </section>
