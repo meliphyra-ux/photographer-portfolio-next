@@ -25,7 +25,7 @@ const Main = () => {
         // Section with main info
         <section className="flex flex-row items-center sm:text-left justify-center md:justify-between h-screen ">
             <article className="lg:mx-32 mx-16 md:w-3/5 lg:w-3/6 flex flex-col justify-center h-2/3">
-                <h1 className="text-white lg:text-5xl md:text-3xl  mb-5">
+                <h1 className="text-white lg:text-5xl text-3xl  mb-5">
                     Hello, I&apos;m Sasha.
                     <br/>
                     Professional
