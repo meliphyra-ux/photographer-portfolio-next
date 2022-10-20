@@ -19,13 +19,13 @@ const CollectionList = () => {
             className="w-full aspect-square bg-neutral-800 rounded-xl flex justify-center flex-col items-center cursor-pointer hover:bg-neutral-700 hover:text-4xl hover:scale-105 duration-150"
             key={`${collection.collectionName}`}
           >
-            <Image
+            {collection.collectionImage && <Image
                 width={300}
                 height={300}
                 src={collection.collectionImage}
                 className="w-full h-4/5 object-cover object-center duration-150 relative rounded-xl z-10 cursor-pointer"
                 alt={`Photo of collection ${collection.collectionName}`}
-              />
+              />}
             <p className="py-4">{collection.collectionName}</p>
           </div>
         ))}

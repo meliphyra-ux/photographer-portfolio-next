@@ -33,8 +33,8 @@ const Main = () => {
                     Photographer
                 </h1>
                 <p className="text-white lg:text-3xl text-2xl font-extralight mb-8">
-                    &quot;Taking photos is like rutine for me,
-                    <br/> a nice one rutine&quot;
+                    &quot;Taking photos is like routine for me,
+                    <br/> a nice one routine&quot;
                 </p>
                 <button
                     className="px-2.5 md:w-1/3 py-4 text-white border-2 border-white hover:bg-white hover:text-black duration-300 text-xl mb-6"
@@ -59,7 +59,7 @@ const Main = () => {
             {/* Section for photo slider */}
 
             <div className="overflow-hidden md:w-2/5 lg:w-3/6 md:flex hidden flex-row h-screen">
-                {photos && photos.length != 0 && window.innerWidth > 768 && (
+                {photos && photos.length !== 0 && (
                     <>
                         {photos.map((photo, index) => (
                             <Image
@@ -69,7 +69,7 @@ const Main = () => {
                                 src={photo.src}
                                 className="duration-500 object-cover aspect-square object-center w-full h-full"
                                 style={{transform: `translateX(${0 - photoSlider * 100}%)`}}
-                                alt="Photo carusel"
+                                alt="Photo carousel"
                                 priority={true}
                             />
                         ))}
