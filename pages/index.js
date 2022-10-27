@@ -70,6 +70,7 @@ const Main = () => {
                                 className="duration-500 object-cover aspect-square object-center w-full h-full"
                                 style={{transform: `translateX(${0 - photoSlider * 100}%)`}}
                                 alt="Photo carousel"
+                                priority={true}
                             />
                         ))}
                     </>
