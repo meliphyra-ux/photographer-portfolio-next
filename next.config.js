@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   swcMinify: true,
   images: {
-    domains: ['cdn.mos.cms.futurecdn.net', 'photocasa.ru', 'i.imgur.com']
+    domains: ['res.cloudinary.com', 'i.imgur.com']
   },
   experimental:{
     images:{
