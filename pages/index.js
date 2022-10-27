@@ -45,12 +45,12 @@ const Main = () => {
                 <section>
                     <button className="mr-5">
                         <a href="https://www.instagram.com/gamewithsasha/">
-                            <Image src={instagram} alt="Instagram" width={50} height={50} priority={true}/>
+                            <Image src={instagram} alt="Instagram" width={50} height={50}/>
                         </a>
                     </button>
                     <button className="mr-5">
                         <a href="https://t.me/gamewithsasha">
-                            <Image src={telegram} alt="Telegram" width={50} height={50} priority={true}/>
+                            <Image src={telegram} alt="Telegram" width={50} height={50}/>
                         </a>
                     </button>
                 </section>
@@ -70,7 +70,7 @@ const Main = () => {
                                 className="duration-500 object-cover aspect-square object-center w-full h-full"
                                 style={{transform: `translateX(${0 - photoSlider * 100}%)`}}
                                 alt="Photo carousel"
-                                priority={true}
+                                priority={index === photoSlider + 1 ? true : false}
                             />
                         ))}
                     </>
