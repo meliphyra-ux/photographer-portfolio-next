@@ -70,6 +70,8 @@ const Main = () => {
                                 className="duration-500 object-cover aspect-square object-center w-full h-full"
                                 style={{transform: `translateX(${0 - photoSlider * 100}%)`}}
                                 alt="Photo carousel"
+                                placeholder="blur"
+                                blurDataURL={photo.src}
                                 priority={index === photoSlider + 1 ? true : false}
                             />
                         ))}

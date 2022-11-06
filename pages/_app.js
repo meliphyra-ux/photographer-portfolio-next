@@ -56,7 +56,7 @@ function ProviderWrap({ children }) {
       .catch((e) => {
         console.log(e);
       });
-  }, []);
+  }, [dispatch]);
   return <div>{children}</div>;
 }
 
