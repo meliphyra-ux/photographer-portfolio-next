@@ -11,6 +11,16 @@ import {
 } from "firebase/firestore";
 import { db } from "../pages/_app";
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyB0L5Hpg9ql9BLPEsEqtJyAWGRqNk_Xgz4",
+  authDomain: "photographer-portfolio-cafc5.firebaseapp.com",
+  projectId: "photographer-portfolio-cafc5",
+  storageBucket: "photographer-portfolio-cafc5.appspot.com",
+  messagingSenderId: "365361872824",
+  appId: "1:365361872824:web:7c96a85b9e0f77e2f9994d",
+  measurementId: "G-6BP3G12PE1",
+};
+
 export async function setPhoto(collect, description, photoSrc) {
   try {
     const docRef = await addDoc(collection(db, "photos"), {
