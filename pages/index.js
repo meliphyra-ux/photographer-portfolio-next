@@ -63,7 +63,7 @@ const Main = () => {
       {/* Section for photo slider */}
 
       <div className="overflow-hidden md:w-2/5 lg:w-3/6 md:flex hidden flex-row h-screen">
-        {windowWidth > 1200 && photos && photos.length !== 0 && (
+        {windowWidth > 768 && photos && photos.length !== 0 && (
           <>
             {photos.map((photo, index) => (
               <Image
