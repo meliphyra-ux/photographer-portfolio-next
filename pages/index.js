@@ -44,7 +44,6 @@ const Main = () => {
 
       {/* Section for photo slider */}
       <Carousel />
-      
     </section>
   );
 };
