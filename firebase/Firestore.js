@@ -34,20 +34,10 @@ export async function setPhoto(collect, description, photoSrc) {
   }
 }
 export async function GetPhoto() {
-  const querySnapshot = await getDocs(collection(db, "photos"));
-  const docs = [];
-  querySnapshot.forEach((doc) => {
-    docs.push(doc);
-  });
-  return docs;
+  return getDocs(collection(db, "photos"));
 }
 export async function GetCollections() {
-  const querySnapshot = await getDocs(collection(db, "collections"));
-  const docs = [];
-  querySnapshot.forEach((doc) => {
-    docs.push(doc);
-  });
-  return docs;
+  return getDocs(collection(db, "collections"));
 }
 
 export async function setCollections(collectionName, photoID, collectionImage) {
@@ -55,7 +45,7 @@ export async function setCollections(collectionName, photoID, collectionImage) {
     collectionName: collectionName.trim(),
     photoArray: [photoID],
   });
-  await updateCollectionImage(collectionImage)
+  await updateCollectionImage(collectionImage);
 }
 
 export async function DeletePhoto(photoID, collectionName) {
@@ -70,19 +60,22 @@ export async function DeleteCollection(collectionName) {
   await deleteDoc(doc(db, "collections", collectionName));
 }
 
-export async function UpdateCollectionArray(collectionName, photoID, collectionImage) {
+export async function UpdateCollectionArray(
+  collectionName,
+  photoID,
+  collectionImage
+) {
   const collectionRef = doc(db, "collections", collectionName);
   await updateDoc(collectionRef, {
     photoArray: arrayUnion(photoID),
   });
-  await updateCollectionImage(collectionName, collectionImage)
+  await updateCollectionImage(collectionName, collectionImage);
 }
-async function updateCollectionImage(collectionName, collectionImage){
+async function updateCollectionImage(collectionName, collectionImage) {
   const collectionRef = doc(db, "collections", collectionName);
-  if(collectionImage){
-  await updateDoc(collectionRef,
-    {
+  if (collectionImage) {
+    await updateDoc(collectionRef, {
       collectionImage,
-    })
+    });
   }
 }
