@@ -12,9 +12,9 @@ export const photosSlice = createSlice({
         //Reducer for adding Photos
         addPhotos: (state, action) => {
             state.photos.push({
-                collection: action.payload.data().collection,
-                description: action.payload.data().description,
-                src: action.payload.data().src,
+                collection: action.payload.data.collection,
+                description: action.payload.data.description,
+                src: action.payload.data.src,
                 id: action.payload.id
             })
         },

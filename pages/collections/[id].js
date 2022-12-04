@@ -8,7 +8,6 @@ const Collection = () => {
   const collection = useSelector((state) => state.photos.photos).filter(
     (collection) => collection.collection === id
   );
-
   return (
     <section className="text-white px-8 sm:px-16 lg:px-32 py-10">
       <h1 className="md:text-5xl text-3xl mb-12 flex items-center">
@@ -23,11 +22,11 @@ const Collection = () => {
           {collection.map((photo) => (
             <figure
               key={photo.id}
-              className="w-full aspect-square relative hover:scale-105 duration-150"
+              className="w-full relative hover:scale-105 duration-150"
             >
               <Image
-                width={400}
-                height={400}
+                width={700}
+                height={700}
                 src={photo.src}
                 className="w-full h-full object-cover object-top hover:opacity-10 duration-150 relative rounded-xl z-10 cursor-pointer"
                 alt={`Photo of collection ${id}`}

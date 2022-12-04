@@ -23,7 +23,7 @@ const ProviderWrap = ({ children }) => {
     GetPhoto()
       .then((docs) => {
         docs.forEach((doc) => {
-          dispatch(addPhotos(doc));
+          dispatch(addPhotos({data: doc.data(), id: doc.id}));
         });
       })
       .catch((e) => {

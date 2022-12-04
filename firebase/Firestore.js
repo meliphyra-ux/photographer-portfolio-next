@@ -34,20 +34,10 @@ export async function setPhoto(collect, description, photoSrc) {
   }
 }
 export async function GetPhoto() {
-  const querySnapshot = await getDocs(collection(db, "photos"));
-  const docs = [];
-  querySnapshot.forEach((doc) => {
-    docs.push(doc);
-  });
-  return docs;
+  return getDocs(collection(db, "photos"));
 }
 export async function GetCollections() {
-  const querySnapshot = await getDocs(collection(db, "collections"));
-  const docs = [];
-  querySnapshot.forEach((doc) => {
-    docs.push(doc);
-  });
-  return docs;
+  return getDocs(collection(db, "collections"));
 }
 
 export async function setCollections(collectionName, photoID, collectionImage) {
