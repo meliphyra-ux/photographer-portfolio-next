@@ -13,17 +13,15 @@ export const collectionSlice = createSlice({
   reducers: {
     updateCollection: (state, action) => {
       state.value.push(action.payload);
-      state.collectionsList.push(action.payload.collectionName)
+      state.collectionsList.push(action.payload.collectionName);
     },
     removeCollection: (state, action) => {
-      const collectionArray = current(state.value);
-      const deletedCollectionIndex = collectionArray.indexOf(action.payload);
-      let deletedCollection = state.value.splice(deletedCollectionIndex, 1);
-      deletedCollection[0].photoArray.forEach(item =>{
-        DeletePhoto(item, deletedCollection[0].collectionName)
-      })
-      state.value = collectionArray;
-      DeleteCollection(action.payload.collectionName)
+      const deletedCollectionIndex = state.value.indexOf(action.payload);
+      const deletedCollection = state.value.splice(deletedCollectionIndex, 1);
+      deletedCollection[0].photoArray.forEach((item) => {
+        DeletePhoto(item, deletedCollection[0].collectionName);
+      });
+      DeleteCollection(action.payload.collectionName);
     },
   },
 });
