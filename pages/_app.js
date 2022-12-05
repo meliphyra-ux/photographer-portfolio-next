@@ -1,16 +1,15 @@
 import React from "react";
 import Head from "next/head";
-import "../styles/styles.css";
-import ProviderWrap from "../components/ProviderWrap";
-
+import ProviderWrapComponent from "../components/ProviderWrapComponent";
 //Redux imports
 import store from "../components/store/store";
 import { Provider } from "react-redux";
-
 // Firestore imports
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebase/Firestore";
 import { getFirestore } from "firebase/firestore";
+// Style imports
+import "../styles/styles.css";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -32,9 +31,9 @@ const MyApp = ({ Component, pageProps }) => {
           content="I'm Sasha - professional photographer. Welcome to my portfolio website!"
         />
       </Head>
-      <ProviderWrap>
+      <ProviderWrapComponent>
         <Component {...pageProps} />
-      </ProviderWrap>
+      </ProviderWrapComponent>
     </Provider>
   );
 };

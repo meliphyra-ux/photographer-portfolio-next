@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import Image from "next/future/image";
+// Redux imports
+import { useSelector } from "react-redux";
 
-const Carousel = () => {
+const CarouselComponent = () => {
   const photos = useSelector((state) => state.photos.photos).slice(0, 5);
   const [photoSlider, setPhotoSlider] = useState(0);
   const [windowWidth, setWindowWidth] = useState(0)
@@ -44,4 +45,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default CarouselComponent;

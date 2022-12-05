@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
 import Image from "next/future/image";
+// Redux imports
+import { useSelector } from "react-redux";
 
 const Collection = () => {
   const router = useRouter();

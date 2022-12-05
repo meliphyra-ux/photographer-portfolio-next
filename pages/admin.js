@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getAuth } from "firebase/auth";
 import { useRouter } from "next/router";
-import AddPhoto from "../components/admin/AddPhoto";
-import styles from "../components/admin/Admin.module.scss";
-import PhotoList from "../components/admin/PhotoList";
-import CollectionsList from "../components/admin/CollectionsList";
+import AddPhotoComponent from "../components/admin/AddPhotoComponent";
+import AdminPhotoListComponent from "../components/admin/AdminPhotoListComponent";
+import AdminCollectionsListComponent from "../components/admin/AdminCollectionsListComponent";
+// Firebase imports
+import { getAuth } from "firebase/auth";
+// Styles imports
+import styles from "../components/admin/AdminPanelComponent.module.scss";
 
 const Admin = () => {
   const [loading, setLoading] = useState(true);
@@ -29,9 +31,9 @@ const Admin = () => {
       {loading && <h1>Loading...</h1>}
       {loggedIn && !loading && (
         <>
-          <PhotoList />
-          <CollectionsList />
-          <AddPhoto />
+          <AdminPhotoListComponent />
+          <AdminCollectionsListComponent />
+          <AddPhotoComponent />
         </>
       )}
     </div>

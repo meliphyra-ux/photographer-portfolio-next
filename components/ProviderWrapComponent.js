@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
-
-import { addPhotos } from "../components/store/photosSlice";
-import { updateCollection } from "../components/store/collectionSlice";
+// Redux imports
+import { addPhoto } from "./store/photosSlice";
+import { updateCollection } from "./store/collectionSlice";
 import { useDispatch } from "react-redux";
+// Firebase imports
+import { getCollections, getPhotos } from "../firebase/Firestore";
 
-import { GetCollections, GetPhoto } from "../firebase/Firestore";
-
-const ProviderWrap = ({ children }) => {
+const ProviderWrapComponent = ({ children }) => {
   const dispatch = useDispatch();
-
   useEffect(() => {
-    // Fetching data
-    GetCollections()
+    getCollections()
       .then((docs) => {
         docs.forEach((doc) => {
           dispatch(updateCollection(doc.data()));
@@ -20,10 +18,10 @@ const ProviderWrap = ({ children }) => {
       .catch((e) => {
         console.log(e);
       });
-    GetPhoto()
+    getPhotos()
       .then((docs) => {
         docs.forEach((doc) => {
-          dispatch(addPhotos({data: doc.data(), id: doc.id}));
+          dispatch(addPhoto({ data: doc.data(), id: doc.id }));
         });
       })
       .catch((e) => {
@@ -33,4 +31,4 @@ const ProviderWrap = ({ children }) => {
   return <div>{children}</div>;
 };
 
-export default ProviderWrap;
+export default ProviderWrapComponent;

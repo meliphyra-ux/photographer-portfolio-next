@@ -1,9 +1,9 @@
+import { useRouter } from "next/router";
+import Image from "next/future/image";
+import CarouselComponent from "../components/CarouselComponent";
+// Styles imports
 import instagram from "../styles/assets/instagram.png";
 import telegram from "../styles/assets/telegram.png";
-
-import Image from "next/future/image";
-import { useRouter } from "next/router";
-import Carousel from "../components/Carousel";
 
 const Main = () => {
   const router = useRouter();
@@ -43,7 +43,7 @@ const Main = () => {
       </article>
 
       {/* Section for photo slider */}
-      <Carousel />
+      <CarouselComponent />
     </section>
   );
 };

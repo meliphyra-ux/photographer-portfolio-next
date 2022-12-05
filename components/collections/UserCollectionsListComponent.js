@@ -1,10 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
 import Image from "next/future/image";
 import { useRouter } from "next/router";
+// Redux imports
+import { useSelector } from "react-redux";
 
-const CollectionList = () => {
+const UserCollectionsListComponent = () => {
   const collections = useSelector((state) =>
     state.collection.value.map((collection) => {
       return {
@@ -42,4 +42,4 @@ const CollectionList = () => {
   );
 };
 
-export default CollectionList;
+export default UserCollectionsListComponent;
