@@ -1,12 +1,11 @@
-import { useRouter } from "next/router";
-import Image from "next/future/image";
-import CarouselComponent from "../components/CarouselComponent";
+import Link from 'next/link';
+import Image from 'next/future/image';
+import CarouselComponent from '../components/CarouselComponent';
 // Styles imports
-import instagram from "../styles/assets/instagram.png";
-import telegram from "../styles/assets/telegram.png";
+import instagram from '../styles/assets/instagram.png';
+import telegram from '../styles/assets/telegram.png';
 
 const Main = () => {
-  const router = useRouter();
   return (
     // Section with main info
     <section className="flex flex-row items-center sm:text-left justify-center md:justify-between h-screen ">
@@ -22,12 +21,11 @@ const Main = () => {
           &quot;Taking photos is like routine for me,
           <br /> a nice one routine&quot;
         </p>
-        <button
-          className="px-2.5 md:w-1/3 py-4 text-white border-2 border-white hover:bg-white hover:text-black duration-300 text-xl mb-6"
-          onClick={() => router.push("/collections")}
-        >
-          Collections
-        </button>
+        <Link href="/collections">
+          <button className="px-2.5 md:w-1/3 py-4 text-white border-2 border-white hover:bg-white hover:text-black duration-300 text-xl mb-6">
+            Collections
+          </button>
+        </Link>
         <section>
           <button className="mr-5">
             <a href="https://www.instagram.com/gamewithsasha/">
@@ -47,4 +45,14 @@ const Main = () => {
     </section>
   );
 };
+
+// export async function getStaticProps(){
+//   const photos = await getPhotos();
+//   return{
+//     props:{
+
+//     }
+//   }
+// }
+
 export default Main;

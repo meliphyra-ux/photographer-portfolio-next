@@ -3,6 +3,8 @@ import {
   collection,
   updateDoc,
   getDocs,
+  where,
+  query,
   setDoc,
   doc,
   deleteDoc,
@@ -40,6 +42,11 @@ export async function setCollection(collectionName, photoID, collectionImage) {
     photoArray: [photoID],
   });
   await updateCollectionImage(collectionImage);
+}
+
+export async function getPhotosByCollection(collectionID){
+  const q = query(collection(db, "photos"), where("collection", "==", collectionID))
+  return getDocs(q)
 }
 
 export async function getPhotos() {

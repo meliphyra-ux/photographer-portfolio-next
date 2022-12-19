@@ -6,9 +6,10 @@ import { useDispatch } from "react-redux";
 // Firebase imports
 import { getCollections, getPhotos } from "../firebase/Firestore";
 
-const ProviderWrapComponent = ({ children }) => {
+const ProviderWrapComponent = ({ children, response }) => {
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log(response)
     getCollections()
       .then((docs) => {
         docs.forEach((doc) => {
@@ -27,8 +28,21 @@ const ProviderWrapComponent = ({ children }) => {
       .catch((e) => {
         console.log(e);
       });
-  }, [dispatch]);
+  }, [dispatch,response]);
   return <div>{children}</div>;
 };
+
+export async function getStaticProps(){
+  const response = await getPhotos();
+  for(let doc in response){
+    console.log(doc)
+  }
+  
+  return {
+    props:{
+      response
+    }
+  };
+}
 
 export default ProviderWrapComponent;
