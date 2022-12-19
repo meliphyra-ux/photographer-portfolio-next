@@ -16,7 +16,6 @@ const Collections = ({ collectionsProps }) => {
     </section>
   )
 }
-
 export async function getStaticProps(){
   const collections = await getCollections();
   const collectionsProps = []
@@ -25,7 +24,7 @@ export async function getStaticProps(){
     props:{
       collectionsProps
     },
-    revalidate: 60
+    revalidate: 10
   }
 }
 

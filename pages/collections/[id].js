@@ -61,7 +61,7 @@ export async function getStaticProps({ params: { id } }) {
     props: {
       photosProps,
     },
-    revalidate: 60
+    revalidate: 10
   };
 }
 
