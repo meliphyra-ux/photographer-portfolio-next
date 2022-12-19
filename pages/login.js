@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import styles from "../components/login/Login.module.scss";
 import { useRouter } from "next/router";
+// Firebase imports
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// Styles imports
+import styles from "../components/login/Login.module.scss";
 
 const Login = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  // Authentication check
-
   useEffect(() => {
     const auth = getAuth();
     auth.operations

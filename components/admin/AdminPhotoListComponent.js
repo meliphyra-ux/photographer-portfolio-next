@@ -1,13 +1,14 @@
 import React from "react";
-import styles from "./Admin.module.scss";
 import { useRouter } from "next/router";
-
-import { getAuth, signOut } from "firebase/auth";
-
+// Redux imports 
 import { useDispatch, useSelector } from "react-redux";
 import { removePhoto } from "../store/photosSlice";
+// Firebase imports
+import { getAuth, signOut } from "firebase/auth";
+//Styles imports
+import styles from "./AdminPanelComponent.module.scss";
 
-const PhotoList = () => {
+const AdminPhotoListComponent = () => {
   const photos = useSelector((state) => state.photos.photos);
   const dispatch = useDispatch();
 
@@ -61,4 +62,4 @@ const PhotoList = () => {
     </div>
   );
 }
-export default PhotoList
+export default AdminPhotoListComponent

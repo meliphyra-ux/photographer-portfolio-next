@@ -1,20 +1,21 @@
 import React, { useState } from "react";
+// Redux imports
 import { useSelector } from "react-redux";
-
+// Firebase imports
 import {
-  setCollections,
+  setCollection,
   setPhoto,
-  UpdateCollectionArray,
+  updateCollectionArray,
 } from "../../firebase/Firestore";
+//Styles imports
+import styles from "./AddPhotoComponent.module.scss";
 
-import styles from "./AddPhoto.module.scss";
-
-const AddPhoto = () => {
+const AddPhotoComponent = () => {
   const collections = useSelector((state) => state.collection.collectionsList);
-  const [collection, setCollection] = useState("");
+  const [collectionName, setCollectionName] = useState("");
   const [photoSrc, setPhotoSrc] = useState("");
   const [description, setDescription] = useState("");
-  const [collectionImage, setCollectionImage] = useState("")
+  const [collectionImage, setCollectionImage] = useState("");
 
   return (
     <div className={styles.adminAddphoto}>
@@ -22,19 +23,23 @@ const AddPhoto = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setPhoto(collection, description, photoSrc)
+          setPhoto(collectionName, description, photoSrc)
             .then((photoID) => {
-              collections.includes(collection)
-                ? UpdateCollectionArray(collection, photoID, collectionImage)
-                : setCollections(collection, photoID, collectionImage);
+              collections.includes(collectionName)
+                ? updateCollectionArray(
+                    collectionName,
+                    photoID,
+                    collectionImage
+                  )
+                : setCollection(collectionName, photoID, collectionImage);
             })
             .catch((e) => {
               console.log(e);
             });
-          setCollection("");
+          setCollectionName("");
           setPhotoSrc("");
           setDescription("");
-          setCollectionImage("")
+          setCollectionImage("");
         }}
       >
         <label>Photo Src</label>
@@ -57,8 +62,8 @@ const AddPhoto = () => {
         <input
           type="text"
           placeholder="Collection"
-          value={collection}
-          onChange={(e) => setCollection(e.target.value)}
+          value={collectionName}
+          onChange={(e) => setCollectionName(e.target.value)}
           required
         />
         <label>Collection Image</label>
@@ -73,4 +78,4 @@ const AddPhoto = () => {
     </div>
   );
 };
-export default AddPhoto;
+export default AddPhotoComponent;

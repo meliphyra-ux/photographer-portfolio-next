@@ -3,6 +3,8 @@ import {
   collection,
   updateDoc,
   getDocs,
+  where,
+  query,
   setDoc,
   doc,
   deleteDoc,
@@ -33,14 +35,8 @@ export async function setPhoto(collect, description, photoSrc) {
     console.error("Error adding document: ", e);
   }
 }
-export async function GetPhoto() {
-  return getDocs(collection(db, "photos"));
-}
-export async function GetCollections() {
-  return getDocs(collection(db, "collections"));
-}
 
-export async function setCollections(collectionName, photoID, collectionImage) {
+export async function setCollection(collectionName, photoID, collectionImage) {
   await setDoc(doc(db, "collections", collectionName), {
     collectionName: collectionName.trim(),
     photoArray: [photoID],
@@ -48,7 +44,19 @@ export async function setCollections(collectionName, photoID, collectionImage) {
   await updateCollectionImage(collectionImage);
 }
 
-export async function DeletePhoto(photoID, collectionName) {
+export async function getPhotosByCollection(collectionID){
+  const q = query(collection(db, "photos"), where("collection", "==", collectionID))
+  return getDocs(q)
+}
+
+export async function getPhotos() {
+  return getDocs(collection(db, "photos"));
+}
+export async function getCollections() {
+  return getDocs(collection(db, "collections"));
+}
+
+export async function deletePhoto(photoID, collectionName) {
   const collectionRef = doc(db, "collections", collectionName);
   await updateDoc(collectionRef, {
     photoArray: arrayRemove(photoID),
@@ -56,11 +64,11 @@ export async function DeletePhoto(photoID, collectionName) {
   await deleteDoc(doc(db, "photos", photoID));
 }
 
-export async function DeleteCollection(collectionName) {
+export async function deleteCollection(collectionName) {
   await deleteDoc(doc(db, "collections", collectionName));
 }
 
-export async function UpdateCollectionArray(
+export async function updateCollectionArray(
   collectionName,
   photoID,
   collectionImage

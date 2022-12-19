@@ -1,11 +1,11 @@
 import React from "react";
-
+// Redux imports
 import { useSelector, useDispatch } from "react-redux";
 import { removeCollection } from "../store/collectionSlice";
+// Styles imports
+import styles from "./AdminPanelComponent.module.scss";
 
-import styles from "./Admin.module.scss";
-
-const CollectionsList = () => {
+const AdminCollectionsListComponent = () => {
   const collections = useSelector((state) => state.collection.value);
   const dispatch = useDispatch();
   return (
@@ -34,4 +34,4 @@ const CollectionsList = () => {
     </div>
   );
 }
-export default CollectionsList
+export default AdminCollectionsListComponent
