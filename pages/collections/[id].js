@@ -2,23 +2,12 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/future/image';
 
-import { getPhotosByCollection } from '../../firebase/Firestore';
-import { useEffect, useState } from 'react';
+import { getPhotosByCollection, getCollections } from '../../firebase/Firestore';
 
-const Collection = () => {
+const Collection = ({ photosProps }) => {
   const {
     query: { id },
   } = useRouter();
-  const [photos, setPhotos] = useState([]);
-  useEffect(() => {
-    if (id) {
-      getPhotosByCollection(id).then((photoList) => {
-        photoList.forEach((photo) =>
-          setPhotos((photos) => [...photos, { id: photo.id, ...photo.data() }])
-        );
-      });
-    }
-  }, [id]);
   return (
     <section className="text-white px-8 sm:px-16 lg:px-32 py-10">
       <Link href="/collections">
@@ -28,7 +17,7 @@ const Collection = () => {
         </h1>
       </Link>
       <div className="grid 2xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8 w-full">
-        {photos.map((photo) => (
+        {photosProps.map((photo) => (
           <figure
             key={photo.id}
             className="w-full relative hover:scale-105 duration-150"
@@ -49,5 +38,31 @@ const Collection = () => {
     </section>
   );
 };
+
+export async function getStaticPaths(){
+  const collectionPaths = await getCollections();
+  const collectionPathsList = []
+  collectionPaths.forEach(collectionPath => collectionPathsList.push(collectionPath.data()))
+
+  return {
+    paths: collectionPathsList.map(path => ({
+      params: {id: path.collectionName}
+    })),
+    fallback: 'blocking'
+  }
+}
+
+
+export async function getStaticProps({ params: { id } }) {
+  const photos = await getPhotosByCollection(id);
+  const photosProps = [];
+  photos.forEach((photo) => photosProps.push({ id: photo.id, ...photo.data() }));
+  return {
+    props: {
+      photosProps,
+    },
+    revalidate: 60
+  };
+}
 
 export default Collection;

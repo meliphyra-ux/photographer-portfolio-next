@@ -17,14 +17,15 @@ const Collections = ({ collectionsProps }) => {
   )
 }
 
-export async function getServerSideProps(){
+export async function getStaticProps(){
   const collections = await getCollections();
   const collectionsProps = []
   collections.forEach(collection => collectionsProps.push(collection.data()))
   return{
     props:{
       collectionsProps
-    }
+    },
+    revalidate: 60
   }
 }
 
