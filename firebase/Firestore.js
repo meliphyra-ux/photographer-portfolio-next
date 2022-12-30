@@ -10,6 +10,8 @@ import {
   deleteDoc,
   arrayUnion,
   arrayRemove,
+  orderBy,
+  serverTimestamp,
 } from "firebase/firestore";
 import { db } from "../pages/_app";
 
@@ -23,12 +25,14 @@ export const firebaseConfig = {
   measurementId: "G-6BP3G12PE1",
 };
 
-export async function setPhoto(collect, description, photoSrc) {
+export async function setPhoto(collect, description, photoSrc, aspectRatio) {
   try {
     const docRef = await addDoc(collection(db, "photos"), {
       collection: collect.trim(),
       description: description.trim(),
       src: photoSrc.trim(),
+      aspectRatio,
+      timestamp: serverTimestamp()
     });
     return docRef.id;
   } catch (e) {
@@ -45,7 +49,7 @@ export async function setCollection(collectionName, photoID, collectionImage) {
 }
 
 export async function getPhotosByCollection(collectionID){
-  const q = query(collection(db, "photos"), where("collection", "==", collectionID))
+  const q = query(collection(db, "photos"), where("collection", "==", collectionID), orderBy('timestamp'))
   return getDocs(q)
 }
 

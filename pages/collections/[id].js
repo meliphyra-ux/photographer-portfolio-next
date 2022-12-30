@@ -20,7 +20,7 @@ const Collection = ({ photosProps }) => {
         {photosProps.map((photo) => (
           <figure
             key={photo.id}
-            className="w-full relative hover:scale-105 duration-150"
+            className={`w-full relative hover:scale-105 duration-150 ${(photo.aspectRatio || 'vertical') === 'horizontal' ? 'col-span-2' : ''}`}
           >
             <Image
               width={700}
@@ -56,7 +56,9 @@ export async function getStaticPaths(){
 export async function getStaticProps({ params: { id } }) {
   const photos = await getPhotosByCollection(id);
   const photosProps = [];
-  photos.forEach((photo) => photosProps.push({ id: photo.id, ...photo.data() }));
+  photos.forEach((photo) => photosProps.push({ id: photo.id, 
+    ...photo.data(), timestamp: null 
+  }));
   return {
     props: {
       photosProps,
