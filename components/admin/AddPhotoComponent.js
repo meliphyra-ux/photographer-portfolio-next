@@ -1,21 +1,40 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 // Redux imports
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 // Firebase imports
 import {
   setCollection,
   setPhoto,
   updateCollectionArray,
-} from "../../firebase/Firestore";
+} from '../../firebase/Firestore';
 //Styles imports
-import styles from "./AddPhotoComponent.module.scss";
+import styles from './AddPhotoComponent.module.scss';
+
+const defaultFormFieldValues = {
+  collectionName: '',
+  photoSrc: '',
+  description: '',
+  collectionImage: '',
+  aspectRatio: '',
+};
 
 const AddPhotoComponent = () => {
   const collections = useSelector((state) => state.collection.collectionsList);
-  const [collectionName, setCollectionName] = useState("");
-  const [photoSrc, setPhotoSrc] = useState("");
-  const [description, setDescription] = useState("");
-  const [collectionImage, setCollectionImage] = useState("");
+  const [formFieldValues, setFormFieldValues] = useState(
+    defaultFormFieldValues
+  );
+  const {
+    collectionName,
+    photoSrc,
+    description,
+    collectionImage,
+    aspectRatio,
+  } = formFieldValues;
+
+  const handleFormFieldChange = (event) => {
+    const { name, value } = event.target;
+    setFormFieldValues({ ...formFieldValues, [name]: value });
+  };
 
   return (
     <div className={styles.adminAddphoto}>
@@ -23,7 +42,7 @@ const AddPhotoComponent = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          setPhoto(collectionName, description, photoSrc)
+          setPhoto(collectionName, description, photoSrc, aspectRatio)
             .then((photoID) => {
               collections.includes(collectionName)
                 ? updateCollectionArray(
@@ -36,10 +55,7 @@ const AddPhotoComponent = () => {
             .catch((e) => {
               console.log(e);
             });
-          setCollectionName("");
-          setPhotoSrc("");
-          setDescription("");
-          setCollectionImage("");
+          setFormFieldValues(defaultFormFieldValues);
         }}
       >
         <label>Photo Src</label>
@@ -47,7 +63,8 @@ const AddPhotoComponent = () => {
           type="url"
           placeholder="Photo src"
           value={photoSrc}
-          onChange={(e) => setPhotoSrc(e.target.value)}
+          onChange={handleFormFieldChange}
+          name="photoSrc"
           required
         />
         <label>Description</label>
@@ -55,7 +72,8 @@ const AddPhotoComponent = () => {
           type="text"
           placeholder="Description"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={handleFormFieldChange}
+          name="description"
           required
         />
         <label>Collection</label>
@@ -63,7 +81,8 @@ const AddPhotoComponent = () => {
           type="text"
           placeholder="Collection"
           value={collectionName}
-          onChange={(e) => setCollectionName(e.target.value)}
+          onChange={handleFormFieldChange}
+          name="collectionName"
           required
         />
         <label>Collection Image</label>
@@ -71,8 +90,32 @@ const AddPhotoComponent = () => {
           type="url"
           placeholder="Collection image"
           value={collectionImage}
-          onChange={(e) => setCollectionImage(e.target.value)}
+          onChange={handleFormFieldChange}
+          name="collectionImage"
         />
+        <label >Aspect Ratio</label>
+        <div className="flex items-center">
+          <input
+            id="aspectRatio1"
+            className="inline-block mb-[0_!important]"
+            type="radio"
+            value="horizontal"
+            placeholder="16x9"
+            onChange={handleFormFieldChange}
+            name="aspectRatio"
+          />
+          <label htmlFor="aspectRatio1" className="inline-block">Horizontal</label>
+          <input
+            id="aspectRatio2"
+            className="inline-block mb-[0_!important] ml-20"
+            type="radio"
+            value="vertical"
+            onChange={handleFormFieldChange}
+            name="aspectRatio"
+          />
+          <label htmlFor="aspectRatio2" className="inline-block">Vertical</label>
+        </div>
+
         <button>Add Photo</button>
       </form>
     </div>
