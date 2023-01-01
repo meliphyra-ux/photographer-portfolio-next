@@ -1,13 +1,27 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/future/image';
+import ImagePopUp from '../../components/image-popup/ImagePopUp.component';
 
-import { getPhotosByCollection, getCollections } from '../../firebase/Firestore';
+import {
+  getPhotosByCollection,
+  getCollections,
+} from '../../firebase/Firestore';
+import { useState } from 'react';
+
+const popUpProps = {
+  visibility: false,
+  aspectRatio: "",
+  url: ""
+}
 
 const Collection = ({ photosProps }) => {
   const {
     query: { id },
   } = useRouter();
+  const [popUp, setPopUp] = useState(popUpProps);
+  const {visibility, url, aspectRatio} = popUp
+
   return (
     <section className="text-white px-8 sm:px-16 lg:px-32 py-10">
       <Link href="/collections">
@@ -20,9 +34,14 @@ const Collection = ({ photosProps }) => {
         {photosProps.map((photo) => (
           <figure
             key={photo.id}
-            className={`w-full relative hover:scale-105 duration-150 ${(photo.aspectRatio || 'vertical') === 'horizontal' ? 'col-span-2' : ''}`}
+            className={`w-full relative hover:scale-105 duration-150 ${
+              (photo.aspectRatio || 'vertical') === 'horizontal'
+                ? 'col-span-2'
+                : ''
+            }`}
           >
             <Image
+              onClick={() => setPopUp({visibility: true, url: photo.src, aspectRatio: photo.aspectRatio})}
               width={700}
               height={700}
               src={photo.src}
@@ -35,35 +54,43 @@ const Collection = ({ photosProps }) => {
           </figure>
         ))}
       </div>
+      {visibility && (
+        <ImagePopUp
+          setPopUp={() => setPopUp({visibility: false, url: ''})}
+          url={url}
+          aspectRatio={aspectRatio}
+        />
+      )}
     </section>
   );
 };
 
-export async function getStaticPaths(){
+export async function getStaticPaths() {
   const collectionPaths = await getCollections();
-  const collectionPathsList = []
-  collectionPaths.forEach(collectionPath => collectionPathsList.push(collectionPath.data()))
+  const collectionPathsList = [];
+  collectionPaths.forEach((collectionPath) =>
+    collectionPathsList.push(collectionPath.data())
+  );
 
   return {
-    paths: collectionPathsList.map(path => ({
-      params: {id: path.collectionName}
+    paths: collectionPathsList.map((path) => ({
+      params: { id: path.collectionName },
     })),
-    fallback: 'blocking'
-  }
+    fallback: 'blocking',
+  };
 }
-
 
 export async function getStaticProps({ params: { id } }) {
   const photos = await getPhotosByCollection(id);
   const photosProps = [];
-  photos.forEach((photo) => photosProps.push({ id: photo.id, 
-    ...photo.data(), timestamp: null 
-  }));
+  photos.forEach((photo) =>
+    photosProps.push({ id: photo.id, ...photo.data(), timestamp: null })
+  );
   return {
     props: {
       photosProps,
     },
-    revalidate: 10
+    revalidate: 10,
   };
 }
 
