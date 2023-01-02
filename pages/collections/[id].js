@@ -1,35 +1,30 @@
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import Image from 'next/future/image';
-import ImagePopUp from '../../components/image-popup/ImagePopUp.component';
+import ImagePopup from '../../components/image-popup/Image-popup.component';
 
 import {
   getPhotosByCollection,
   getCollections,
 } from '../../firebase/Firestore';
 import { useState } from 'react';
+import BackButton from '../../components/back-button/Back-button.component';
 
-const popUpProps = {
+const defaultPopUpProps = {
   visibility: false,
-  aspectRatio: "",
-  url: ""
-}
+  aspectRatio: '',
+  url: '',
+};
 
 const Collection = ({ photosProps }) => {
   const {
     query: { id },
   } = useRouter();
-  const [popUp, setPopUp] = useState(popUpProps);
-  const {visibility, url, aspectRatio} = popUp
+  const [popUp, setPopUp] = useState(defaultPopUpProps);
+  const { visibility, url, aspectRatio } = popUp;
 
   return (
     <section className="text-white px-8 sm:px-16 lg:px-32 py-10">
-      <Link href="/collections">
-        <h1 className="md:text-5xl text-3xl mb-12 flex items-center">
-          <button className="text-white text-3xl max-w-fit mr-10 cursor-pointer duration-150 hover:scale-150">{`<-`}</button>
-          {id}
-        </h1>
-      </Link>
+      <BackButton navigateTo="/collections" title={id} />
       <div className="grid 2xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-8 w-full">
         {photosProps.map((photo) => (
           <figure
@@ -41,7 +36,13 @@ const Collection = ({ photosProps }) => {
             }`}
           >
             <Image
-              onClick={() => setPopUp({visibility: true, url: photo.src, aspectRatio: photo.aspectRatio})}
+              onClick={() =>
+                setPopUp({
+                  visibility: true,
+                  url: photo.src,
+                  aspectRatio: photo.aspectRatio,
+                })
+              }
               width={700}
               height={700}
               src={photo.src}
@@ -55,8 +56,8 @@ const Collection = ({ photosProps }) => {
         ))}
       </div>
       {visibility && (
-        <ImagePopUp
-          setPopUp={() => setPopUp({visibility: false, url: ''})}
+        <ImagePopup
+          closePopup={() => setPopUp(defaultPopUpProps)}
           url={url}
           aspectRatio={aspectRatio}
         />
