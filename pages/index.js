@@ -1,9 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/future/image';
 import CarouselComponent from '../components/CarouselComponent';
-// Styles imports
-import instagram from '../styles/assets/instagram.png';
-import telegram from '../styles/assets/telegram.png';
 
 const Main = () => {
   return (
@@ -29,12 +26,12 @@ const Main = () => {
         <section>
           <button className="mr-5">
             <a href="https://www.instagram.com/gamewithsasha/">
-              <Image src={instagram} alt="Instagram" width={50} height={50} />
+              <Image src="/images/instagram.svg" alt="Instagram" width={50} height={50} />
             </a>
           </button>
           <button className="mr-5">
             <a href="https://t.me/gamewithsasha">
-              <Image src={telegram} alt="Telegram" width={50} height={50} />
+              <Image src="/images/telegram.svg" alt="Telegram" width={50} height={50} />
             </a>
           </button>
         </section>
