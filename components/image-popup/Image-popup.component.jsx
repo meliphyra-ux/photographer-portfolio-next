@@ -3,7 +3,7 @@ import Image from 'next/image';
 const ImagePopup = ({ url, aspectRatio, closePopup }) => {
   return (
     <div className="pop-up-image">
-      <button onClick={closePopup} className="absolute top-2 right-3">
+      <button onClick={closePopup} className="absolute top-5 right-8">
         <Image
           width={45}
           height={45}
