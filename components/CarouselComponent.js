@@ -31,6 +31,7 @@ const CarouselComponent = () => {
                 src={photo.src}
                 className=" object-cover object-center"
                 alt="Photo carousel"
+                priority={true}
                 placeholder="blur"
                 blurDataURL={photo.src}
               />
