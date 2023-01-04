@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import Image from "next/future/image";
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
-import photoCarouselImages from "./store/photoCarouselImages.json";
+import photoCarouselImages from './store/photoCarouselImages.json';
 
 const CarouselComponent = () => {
   const [photoSlider, setPhotoSlider] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
       if (photoSlider < photoCarouselImages.length - 1) {
@@ -13,29 +13,29 @@ const CarouselComponent = () => {
       } else {
         setPhotoSlider(0);
       }
-    }, 5000);
+    }, 7000);
     return () => clearInterval(interval);
-  }, [ photoSlider]);
-  useEffect(()=>{
-    setWindowWidth(window.innerWidth)
-  }, [])
+  }, [photoSlider]);
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+  }, []);
 
   return (
-    <div className="overflow-hidden md:w-2/5 lg:w-3/6 md:flex hidden flex-row h-screen">
+    <div className="absolute z-[-5] overflow-hidden w-full md:flex hidden h-screen opacity-[0.2]">
       {windowWidth > 760 && (
         <>
           {photoCarouselImages.map((photo) => (
-            <Image
-              width={1200}
-              height={800}
-              key={photo.src}
-              src={photo.src}
-              className="duration-300 object-cover aspect-square object-center w-full h-full"
-              style={{ transform: `translateX(${0 - photoSlider * 100}%)` }}
-              alt="Photo carousel"
-              placeholder="blur"
-              blurDataURL={photo.src}
-            />
+            <div key={photo.src} className="w-full h-full flex-none relative duration-700 inline-block" style={{ transform: `translateX(${0 - photoSlider * 100}%)` }}>
+              <Image
+                layout="fill"
+                src={photo.src}
+                className=" object-cover object-center"
+                alt="Photo carousel"
+                priority={true}
+                placeholder="blur"
+                blurDataURL={photo.src}
+              />
+            </div>
           ))}
         </>
       )}
